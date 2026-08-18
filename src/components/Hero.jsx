@@ -33,14 +33,14 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative w-full h-screen overflow-hidden bg-black">
-      {/* Background Video - configured with object-[65%_center] on mobile and object-[center_right] on desktop for better centering on the person */}
+      {/* Background Video - Adjusted mobile object-position to focus on the right */}
       <video
         ref={videoRef}
         autoPlay
         loop
         muted={isMuted}
         playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover object-[65%_center] md:object-[center_right] z-0"
+        className="absolute top-0 left-0 w-full h-full object-cover object-[85%_center] md:object-[center_right] z-0"
       >
         <source src={heroVideo} type="video/mp4" />
         Your browser does not support the video tag.
@@ -102,7 +102,7 @@ const Hero = () => {
 
       </div>
 
-      {/* Play/Pause Controller - shifted slightly left and a bit down from top right */}
+      {/* Play/Pause Controller */}
       <div 
         data-aos="zoom-in"
         data-aos-delay="600"
