@@ -98,9 +98,6 @@ const Expertise = () => {
               <path d="M4 4 Q 10 10 15 15 M 15 15 L 10 15 M 15 15 L 15 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </h2>
-          <p className="text-gray-500 text-base md:text-lg max-w-sm font-medium leading-relaxed">
-            Combining test automation, robust release engineering, and hands-on LLM evaluation to build reliable high-scale platforms.
-          </p>
         </div>
 
         {/* Desktop SVG Animated Dashed Line */}
