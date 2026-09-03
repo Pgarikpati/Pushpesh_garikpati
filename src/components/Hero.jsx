@@ -31,9 +31,13 @@ const Hero = () => {
             
             setScrollProgress(progress);
 
-            // Only scrub video if loaded and duration exists
-            if (video.duration && !video.seeking && isVideoLoaded) {
-              video.currentTime = progress * video.duration;
+            // Scrub video safely (with iOS compatibility checks)
+            if (video.duration && !isNaN(video.duration) && isVideoLoaded) {
+              try {
+                video.currentTime = progress * video.duration;
+              } catch (e) {
+                // Catch any restricted timeline seek exceptions in low-power modes
+              }
             }
           }
           ticking = false;
@@ -45,6 +49,20 @@ const Hero = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isVideoLoaded]);
+
+  // Force load/play state initialization for iOS strict policies
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.load();
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Auto-play was prevented by iOS low-power or policy, handle gracefully
+        });
+      }
+    }
+  }, []);
 
   const currentTime = scrollProgress * 10;
   
@@ -71,13 +89,16 @@ const Hero = () => {
         {/* Fallback Background Layer while video loads */}
         <div className={`absolute inset-0 bg-black z-0 transition-opacity duration-700 ${isVideoLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} />
 
-        {/* Optimized Mobile-Friendly Video Layer */}
+        {/* Fully iOS-Optimized Video Layer */}
         <video
           ref={videoRef}
           muted
+          autoPlay
+          loop
           playsInline
           webkit-playsinline="true"
-          preload="metadata"
+          x5-playsinline="true"
+          preload="auto"
           onLoadedData={() => setIsVideoLoaded(true)}
           className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ${
             isVideoLoaded ? 'opacity-100' : 'opacity-0'
@@ -85,7 +106,8 @@ const Hero = () => {
           style={{
             filter: 'contrast(1.15) saturate(1.05) brightness(1.0)',
             WebkitTransform: 'translateZ(0)',
-            transform: 'translateZ(0)'
+            transform: 'translateZ(0)',
+            objectFit: 'cover'
           }}
         >
           <source src={heroVideo} type="video/mp4" />
