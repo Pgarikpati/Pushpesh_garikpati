@@ -16,14 +16,22 @@ const Hero = () => {
       easing: 'ease-out'
     });
 
+    const video = videoRef.current;
+    if (video) {
+      // Force iOS to load video data and prepare for scrubbing
+      video.load();
+      video.pause();
+    }
+
     let ticking = false;
 
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const section = document.getElementById('home');
-          const video = videoRef.current;
-          if (section && video) {
+          const currentVideo = videoRef.current;
+          
+          if (section && currentVideo) {
             const rect = section.getBoundingClientRect();
             const sectionHeight = section.offsetHeight - window.innerHeight;
             const scrollDistance = -rect.top;
@@ -31,12 +39,12 @@ const Hero = () => {
             
             setScrollProgress(progress);
 
-            // Scrub video safely (with iOS compatibility checks)
-            if (video.duration && !isNaN(video.duration) && isVideoLoaded) {
-              try {
-                video.currentTime = progress * video.duration;
-              } catch (e) {
-                // Catch any restricted timeline seek exceptions in low-power modes
+            // Scrub video currentTime safely on iOS once duration is available
+            if (currentVideo.duration && !isNaN(currentVideo.duration)) {
+              const targetTime = progress * currentVideo.duration;
+              // Prevent excessive calls if difference is negligible
+              if (Math.abs(currentVideo.currentTime - targetTime) > 0.01) {
+                currentVideo.currentTime = targetTime;
               }
             }
           }
@@ -48,20 +56,6 @@ const Hero = () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isVideoLoaded]);
-
-  // Force load/play state initialization for iOS strict policies
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.load();
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Auto-play was prevented by iOS low-power or policy, handle gracefully
-        });
-      }
-    }
   }, []);
 
   const currentTime = scrollProgress * 10;
@@ -89,25 +83,23 @@ const Hero = () => {
         {/* Fallback Background Layer while video loads */}
         <div className={`absolute inset-0 bg-black z-0 transition-opacity duration-700 ${isVideoLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} />
 
-        {/* Fully iOS-Optimized Video Layer */}
+        {/* Optimized iOS-Friendly Video Layer */}
         <video
           ref={videoRef}
           muted
-          autoPlay
-          loop
           playsInline
+          autoPlay={false}
           webkit-playsinline="true"
-          x5-playsinline="true"
           preload="auto"
-          onLoadedData={() => setIsVideoLoaded(true)}
+          onLoadedMetadata={() => setIsVideoLoaded(true)}
+          onCanPlayThrough={() => setIsVideoLoaded(true)}
           className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ${
             isVideoLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           style={{
             filter: 'contrast(1.15) saturate(1.05) brightness(1.0)',
             WebkitTransform: 'translateZ(0)',
-            transform: 'translateZ(0)',
-            objectFit: 'cover'
+            transform: 'translateZ(0)'
           }}
         >
           <source src={heroVideo} type="video/mp4" />
