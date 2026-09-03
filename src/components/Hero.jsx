@@ -24,47 +24,56 @@ const Hero = () => {
 
     let ticking = false;
     let targetTime = 0;
+    let animationFrameId = null;
 
-    // Smooth lerp function for desktop to eliminate stutter/lag during scrubbing
-    const updateVideoTime = () => {
-      const currentVideo = videoRef.current;
-      if (currentVideo && currentVideo.duration && !isNaN(currentVideo.duration)) {
-        // Interpolate current time towards target time for buttery-smooth playback
-        const current = currentVideo.currentTime;
+    // Smooth lerp loop to eliminate laptop scrubbing jitter & lag
+    const render = () => {
+      const videoEl = videoRef.current;
+      if (videoEl && videoEl.duration && !isNaN(videoEl.duration)) {
+        // Linear interpolation for buttery smooth frame scrubbing on laptops
+        const current = videoEl.currentTime;
         const diff = targetTime - current;
         
+        // Only update if difference is noticeable
         if (Math.abs(diff) > 0.005) {
-          currentVideo.currentTime = current + diff * 0.25; // Smoothing factor
+          videoEl.currentTime = current + diff * 0.25; // 0.25 smoothing factor
         }
       }
-      ticking = false;
+      animationFrameId = requestAnimationFrame(render);
     };
 
+    animationFrameId = requestAnimationFrame(render);
+
     const handleScroll = () => {
-      const section = document.getElementById('home');
-      const currentVideo = videoRef.current;
-      
-      if (section && currentVideo) {
-        const rect = section.getBoundingClientRect();
-        const sectionHeight = section.offsetHeight - window.innerHeight;
-        const scrollDistance = -rect.top;
-        const progress = Math.max(0, Math.min(1, scrollDistance / sectionHeight));
-        
-        setScrollProgress(progress);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const section = document.getElementById('home');
+          const currentVideo = videoRef.current;
+          
+          if (section && currentVideo) {
+            const rect = section.getBoundingClientRect();
+            const sectionHeight = section.offsetHeight - window.innerHeight;
+            const scrollDistance = -rect.top;
+            const progress = Math.max(0, Math.min(1, scrollDistance / sectionHeight));
+            
+            setScrollProgress(progress);
 
-        if (currentVideo.duration && !isNaN(currentVideo.duration)) {
-          targetTime = progress * currentVideo.duration;
-        }
-
-        if (!ticking) {
-          window.requestAnimationFrame(updateVideoTime);
-          ticking = true;
-        }
+            if (currentVideo.duration && !isNaN(currentVideo.duration)) {
+              targetTime = progress * currentVideo.duration;
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   const currentTime = scrollProgress * 10;
@@ -92,7 +101,7 @@ const Hero = () => {
         {/* Fallback Background Layer while video loads */}
         <div className={`absolute inset-0 bg-black z-0 transition-opacity duration-700 ${isVideoLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} />
 
-        {/* Laptop & Mobile Optimized Video Layer with Hardware Acceleration */}
+        {/* Optimized Video Layer with Hardware Acceleration Hints */}
         <video
           ref={videoRef}
           muted
@@ -107,6 +116,7 @@ const Hero = () => {
           }`}
           style={{
             filter: 'contrast(1.15) saturate(1.05) brightness(1.0)',
+            WebkitTransform: 'translate3d(0, 0, 0)',
             transform: 'translate3d(0, 0, 0)',
             willChange: 'transform'
           }}
