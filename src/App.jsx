@@ -7,10 +7,10 @@ import Expertise from './components/Expertise'
 import Skills from './components/Skills'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-import Projects from './components/Projects'
-import Certifications from './components/Certifications'
 import Experience from './components/Experience'
-
+import Certifications from './components/Certifications'
+import Archievements from './components/Archievements'
+import ReferenceWorks from './components/ReferenceWorks'
 function App() {
   return (
     <>
@@ -18,13 +18,6 @@ function App() {
       <Navbar />
       <Hero />
       <About />
-      <Experience />
-      <Skills />
-      <Expertise />
-      <Projects />
-      <Certifications />
-      <Contact />
-      <Footer />
     </>
   )
 }

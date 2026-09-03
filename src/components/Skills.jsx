@@ -1,181 +1,143 @@
 import React from 'react';
 import { motion } from 'framer-motion';
- 
+
 const Skills = () => {
   const skillsData = [
     {
-      category: 'Languages',
-      skills: ['Java', 'Python', 'JavaScript', 'React', 'SQL (basics)', 'Go (Learning)'],
+      category: 'Marketing Strategy & Branding',
+      skills: ['Branding', 'Digital Strategy', 'Campaign Management', 'Market Research', 'Community Engagement'],
     },
     {
-      category: 'Test Automation & Performance',
-      skills: ['Selenium Grid', 'Cucumber (BDD)', 'Rest Assured', 'JUnit', 'Postman', 'HP ALM', 'Apache JMeter'],
+      category: 'SEO & Analytics',
+      skills: ['SEO', 'SEM', 'GA4 (Google Analytics)', 'SEMRush', 'Data Analytics', 'Performance Reporting', 'CRM'],
     },
     {
-      category: 'CI/CD & Release Engineering',
-      skills: ['Jenkins', 'GitHub Actions', 'GitLab CI', 'Git', 'Build/Deploy Automation', 'Release Scheduling', 'PR Gating'],
+      category: 'Social Media & Content',
+      skills: ['Social Media Marketing', 'Content Creation', 'Copywriting', 'Community Management', 'Email Marketing', 'WhatsApp Marketing', 'Influencer Management'],
     },
     {
-      category: 'AI / LLM & Platforms',
-      skills: ['Prompt Engineering', 'LLM Evaluation', 'RAG', 'Anthropic Claude API', 'Claude Code', 'Zoho Catalyst (Serverless)', 'REST APIs'],
+      category: 'Tools & Creative Suite',
+      skills: ['Meta Ads Manager', 'Google Ads', 'Mailchimp', 'Adobe Photoshop', 'Adobe Premiere Pro', 'Adobe Illustrator', 'Canva', 'CapCut', 'ChatGPT', 'Claude AI'],
     },
   ];
- 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
- 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-        damping: 12,
-      },
-    },
-  };
- 
-  const skillPillVariants = {
-    initial: { scale: 1 },
-    hover: {
-      scale: 1.08,
-      transition: {
-        type: 'spring',
-        stiffness: 400,
-        damping: 10,
-      },
-    },
-  };
- 
-  const SkillCard = ({ category, skills, index }) => {
-    return (
-      <motion.div
-        variants={itemVariants}
-        whileHover={{
-          y: -8,
-          transition: {
-            type: 'spring',
-            stiffness: 300,
-            damping: 20,
-          },
-        }}
-        className="group relative bg-white border border-black/5 rounded-3xl p-6 h-fit shadow-sm hover:shadow-xl hover:shadow-red-500/5 transition-all duration-500"
-      >
-        {/* Subtle glow on hover */}
-        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-red-500/0 via-red-500/0 to-red-500/0 group-hover:from-red-500/5 group-hover:to-red-500/5 transition-all duration-500 pointer-events-none" />
- 
-        {/* Card content */}
-        <div className="relative z-10">
-          <h3 className="text-sm font-semibold text-black mb-4 tracking-tight">
-            {category}
-          </h3>
- 
-          {/* Skills pills container */}
-          <div className="flex flex-wrap gap-2">
-            {skills.map((skill, idx) => (
-              <motion.button
-                key={idx}
-                variants={skillPillVariants}
-                initial="initial"
-                whileHover="hover"
-                className="px-3 py-1.5 text-xs font-medium text-black bg-black/3 hover:bg-red-500/10 border border-black/5 hover:border-red-500/20 rounded-full transition-all duration-300 cursor-default select-none hover:text-red-500"
-              >
-                {skill}
-              </motion.button>
-            ))}
-          </div>
-        </div>
-      </motion.div>
-    );
-  };
- 
+
+  // Flatten and duplicate skills arrays to ensure seamless infinite looping without gaps
+  const allSkills = skillsData.flatMap(group => group.skills);
+  const duplicatedSkills = [...allSkills, ...allSkills];
+
   return (
-    <section id="skills" className="relative w-full bg-white py-16 md:py-20 overflow-hidden">
-      {/* Subtle grid pattern background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_24%,rgba(0,0,0,.05)_25%,rgba(0,0,0,.05)_26%,transparent_27%,transparent_74%,rgba(0,0,0,.05)_75%,rgba(0,0,0,.05)_76%,transparent_77%,transparent),linear-gradient(0deg,transparent_24%,rgba(0,0,0,.05)_25%,rgba(0,0,0,.05)_26%,transparent_27%,transparent_74%,rgba(0,0,0,.05)_75%,rgba(0,0,0,.05)_76%,transparent_77%,transparent)] bg-[length:50px_50px]" />
-      </div>
- 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-8">
+    <section id="skills" className="relative w-full bg-black py-12 md:py-16 overflow-hidden border-t border-zinc-900">
+      
+      {/* Cinematic Ambient Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-zinc-800/10 rounded-full blur-[180px] pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 mb-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="mb-10 md:mb-12"
+          className="text-center max-w-3xl mx-auto"
         >
-          <div className="mb-3">
-            <span className="inline-block text-xs font-semibold text-black/50 uppercase tracking-widest px-3 py-1.5 bg-black/2 border border-black/5 rounded-full">
-              Technical Stack
+          <div className="mb-3 inline-block">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl">
+              <span className="w-2 h-2 rounded-full bg-zinc-400"></span>
+              <span className="text-zinc-300 text-xs font-mono tracking-widest uppercase">Core Competencies</span>
             </span>
           </div>
- 
-          <h2 className="text-3xl md:text-4xl font-semibold text-black mb-2 tracking-tight">
-            Technologies I Work With
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3 tracking-tight">
+            Digital Marketing Expertise
           </h2>
- 
-          <p className="text-sm text-black/60 font-normal">
-            Quality engineering, CI/CD pipelines, and practical AI/LLM evaluation expertise[cite: 2].
+
+          <p className="text-sm md:text-base text-zinc-400 font-normal">
+            Comprehensive skill set in driving growth, building brands, and leveraging data-driven strategies across digital platforms.
           </p>
         </motion.div>
- 
-        {/* Skills Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6"
-        >
-          {skillsData.map((item, idx) => (
-            <SkillCard
-              key={idx}
-              category={item.category}
-              skills={item.skills}
-              index={idx}
-            />
-          ))}
-        </motion.div>
       </div>
- 
-      {/* Floating accent elements - very subtle */}
+
+      {/* Marquee Tickers Container */}
+      <div className="relative w-full flex flex-col gap-4 overflow-hidden py-2">
+        
+        {/* Gradient Fade Edges for Cinematic Look */}
+        <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-black to-transparent z-20 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-black to-transparent z-20 pointer-events-none" />
+
+        {/* Marquee Row 1: Left to Right */}
+        <div className="flex overflow-hidden whitespace-nowrap select-none">
+          <motion.div
+            initial={{ x: 0 }}
+            animate={{ x: "-50%" }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            className="flex gap-4 shrink-0 items-center"
+          >
+            {duplicatedSkills.map((skill, idx) => (
+              <div
+                key={idx}
+                className="group px-6 py-3 rounded-2xl bg-zinc-950 border border-zinc-800/80 hover:border-white/40 shadow-[0_10px_30px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-all duration-300 hover:scale-105 cursor-default"
+              >
+                <span className="text-sm md:text-base font-mono font-bold text-zinc-300 group-hover:text-white transition-colors">
+                  {skill}
+                </span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Marquee Row 2: Right to Left */}
+        <div className="flex overflow-hidden whitespace-nowrap select-none mt-2">
+          <motion.div
+            initial={{ x: "-50%" }}
+            animate={{ x: 0 }}
+            transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+            className="flex gap-4 shrink-0 items-center"
+          >
+            {[...duplicatedSkills].reverse().map((skill, idx) => (
+              <div
+                key={idx}
+                className="group px-6 py-3 rounded-2xl bg-zinc-950 border border-zinc-800/80 hover:border-white/40 shadow-[0_10px_30px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-all duration-300 hover:scale-105 cursor-default"
+              >
+                <span className="text-sm md:text-base font-mono font-bold text-zinc-300 group-hover:text-white transition-colors">
+                  {skill}
+                </span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+      </div>
+
+      {/* Subtle floating background lighting elements */}
       <motion.div
         animate={{
-          y: [0, 8, 0],
-          opacity: [0.03, 0.06, 0.03],
+          y: [0, 15, 0],
+          opacity: [0.03, 0.08, 0.03],
         }}
         transition={{
           duration: 6,
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-        className="absolute top-10 right-10 w-32 h-32 bg-red-500 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-10 right-10 w-64 h-64 bg-zinc-300 rounded-full blur-3xl pointer-events-none"
       />
- 
+
       <motion.div
         animate={{
-          y: [0, -8, 0],
-          opacity: [0.02, 0.04, 0.02],
+          y: [0, -15, 0],
+          opacity: [0.02, 0.05, 0.02],
         }}
         transition={{
           duration: 8,
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-        className="absolute bottom-20 left-5 w-40 h-40 bg-red-500 rounded-full blur-3xl pointer-events-none"
+        className="absolute bottom-20 left-5 w-72 h-72 bg-zinc-400 rounded-full blur-3xl pointer-events-none"
       />
+
+      {/* Bottom subtle divider line */}
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-zinc-800 to-transparent pointer-events-none z-30" />
     </section>
   );
 };
- 
+
 export default Skills;
