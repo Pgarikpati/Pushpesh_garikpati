@@ -8,33 +8,33 @@ const Expertise = () => {
   const roadmapSteps = [
     { 
       number: "01", 
-      title: "Digital Strategy & Branding", 
-      tech: "Campaigns & Identity",
-      desc: "Developing high-impact brand identities and managing large-scale promotional rollouts."
+      title: "Global GTM & Strategy", 
+      tech: "Market Entry & P&L",
+      desc: "Orchestrating regional and international go-to-market strategies, aligning global priorities with local execution across Middle East, Asia, US & Europe."
     },
     { 
       number: "02", 
-      title: "Social Media & Growth", 
-      tech: "Instagram & YouTube",
-      desc: "Scaling organic community engagement and subscriber bases significantly across platforms."
+      title: "Integrated Campaigns", 
+      tech: "ATL/BTL/TTL & Brand",
+      desc: "Championing integrated marketing campaigns, B2B2C brand partnerships, and multi-country product launches for world-leading organizations."
     },
     { 
       number: "03", 
-      title: "Content & Creative Production", 
-      tech: "Editing & AI Videos",
-      desc: "Producing engaging content, professional graphic designs, video editing, and advanced AI video assets."
+      title: "Corporate Comms & PR", 
+      tech: "Reputation & Crisis",
+      desc: "Managing corporate communications, public-private partnerships, crisis response, and stakeholder engagement to build trust and brand equity."
     },
     { 
       number: "04", 
-      title: "SEO & Web Analytics", 
-      tech: "GA4 & SEMRush",
-      desc: "Implementing technical SEO strategies to maximize web traffic and search performance."
+      title: "Demand Gen & Social Commerce", 
+      tech: "Digital & Influencer",
+      desc: "Scaling demand generation, influencer engagement, and social commerce programs to accelerate lead generation and brand awareness."
     },
     { 
       number: "05", 
-      title: "Ads & Conversion", 
-      tech: "Meta & Google Ads",
-      desc: "Executing targeted ad campaigns, CRM management, and cross-channel marketing."
+      title: "Marketing Analytics & AI", 
+      tech: "ROI & AI Analytics",
+      desc: "Implementing data-driven performance frameworks, ROI optimization, and AI-enabled analytics for commercial excellence."
     },
   ];
 

@@ -4,20 +4,20 @@ import { motion } from 'framer-motion';
 const Skills = () => {
   const skillsData = [
     {
-      category: 'Marketing Strategy & Branding',
-      skills: ['Branding', 'Digital Strategy', 'Campaign Management', 'Market Research', 'Community Engagement'],
+      category: 'Strategic Leadership & GTM',
+      skills: ['Strategic Leadership and P&L Ownership', 'Regional GTM and Brand Engagement', 'Commercial Excellence', 'Cross-Functional Team Leadership', 'Global Agency & Stakeholder Management'],
     },
     {
-      category: 'SEO & Analytics',
-      skills: ['SEO', 'SEM', 'GA4 (Google Analytics)', 'SEMRush', 'Data Analytics', 'Performance Reporting', 'CRM'],
+      category: 'Marketing Analytics & Growth',
+      skills: ['AI-Driven Marketing Analytics', 'Performance Metrics, ROI & Budgeting', 'Digital & Social Commerce Strategy', 'Product and Consumer Marketing', 'APAC Market Execution'],
     },
     {
-      category: 'Social Media & Content',
-      skills: ['Social Media Marketing', 'Content Creation', 'Copywriting', 'Community Management', 'Email Marketing', 'WhatsApp Marketing', 'Influencer Management'],
+      category: 'Communications & Brand Strategy',
+      skills: ['Corporate Communications', 'Employer Branding', 'Integrated Marketing Strategy', 'Brand Activation & Influencer Marketing', 'PR & ESG'],
     },
     {
-      category: 'Tools & Creative Suite',
-      skills: ['Meta Ads Manager', 'Google Ads', 'Mailchimp', 'Adobe Photoshop', 'Adobe Premiere Pro', 'Adobe Illustrator', 'Canva', 'CapCut', 'ChatGPT', 'Claude AI'],
+      category: 'Campaign Execution & Channels',
+      skills: ['ATL/BTL/TTL', 'Global GTM Strategy', 'Demand Generation', 'Cross-Market Strategies', 'Stakeholder Engagement'],
     },
   ];
 
@@ -47,11 +47,11 @@ const Skills = () => {
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3 tracking-tight">
-            Digital Marketing Expertise
+            Professional Expertise
           </h2>
 
           <p className="text-sm md:text-base text-zinc-400 font-normal">
-            Comprehensive skill set in driving growth, building brands, and leveraging data-driven strategies across digital platforms.
+            Comprehensive skill set in driving global GTM, strategic leadership, brand engagement, and commercial excellence.
           </p>
         </motion.div>
       </div>

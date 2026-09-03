@@ -8,9 +8,10 @@ import Skills from './components/Skills'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Experience from './components/Experience'
-import Certifications from './components/Certifications'
+import Courses from './components/Courses'
 import Archievements from './components/Archievements'
 import ReferenceWorks from './components/ReferenceWorks'
+import Podcasts from './components/Podcasts'
 function App() {
   return (
     <>
@@ -18,6 +19,14 @@ function App() {
       <Navbar />
       <Hero />
       <About />
+      <Expertise />
+      <Skills />
+      <Experience />
+      <Courses/>
+      <Archievements />
+      <Podcasts />
+      <Contact />
+      <Footer />
     </>
   )
 }

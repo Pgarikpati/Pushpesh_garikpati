@@ -14,7 +14,7 @@ const TagCard = ({ number, title, text, className, aosDelay, aosType, pathLength
     const cardTopRelativeToContainer = cardRect.top - containerRect.top;
     const containerHeight = containerRect.height;
 
-    // Trigger when the line tip is 50px into the card
+    // Trigger when the line tip reaches into the card
     const triggerY = cardTopRelativeToContainer + 50;
     const lineTipY = latest * containerHeight;
 
@@ -75,7 +75,8 @@ const Experience = () => {
       {/* Cinematic Ambient Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-zinc-800/10 rounded-full blur-[180px] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto relative md:h-[1100px] z-10">
+      {/* Expanded container height to fit all 6 items comfortably */}
+      <div className="max-w-6xl mx-auto relative md:h-[3100px] z-10">
 
         {/* Header Content */}
         <div data-aos="fade-up" className="md:absolute top-10 left-0 md:w-[450px] z-20 mb-16 md:mb-0">
@@ -84,7 +85,7 @@ const Experience = () => {
             <span className="text-zinc-300 text-xs font-mono tracking-widest uppercase">Professional Experience</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-6 tracking-tight relative">
-            Driving Brand Growth & Digital Excellence
+            Driving Brand Growth & Global Excellence
             {/* Hand-drawn arrow */}
             <svg className="absolute -bottom-10 right-10 w-12 h-12 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" className="hidden" />
@@ -93,14 +94,14 @@ const Experience = () => {
           </h2>
         </div>
 
-        {/* Desktop SVG Animated Dashed Line */}
+        {/* Desktop SVG Animated Dashed Line matching card coordinates */}
         <svg
-          className="hidden md:block absolute top-0 left-0 w-full h-[1100px] pointer-events-none z-0"
-          viewBox="0 0 1000 1100"
+          className="hidden md:block absolute top-0 left-0 w-full h-[3100px] pointer-events-none z-0"
+          viewBox="0 0 1000 3100"
           preserveAspectRatio="none"
         >
           <path
-            d="M 650,200 C 400,300 200,400 300,600 C 400,750 700,750 650,950"
+            d="M 650,150 C 400,250 200,400 300,650 C 400,850 700,1000 650,1250 C 600,1450 200,1600 300,1850 C 400,2050 700,2250 650,2500 C 600,2700 200,2850 300,3000"
             fill="none"
             stroke="#27272a"
             strokeWidth="2"
@@ -109,7 +110,7 @@ const Experience = () => {
 
           <mask id="path-mask-exp">
             <motion.path
-              d="M 650,200 C 400,300 200,400 300,600 C 400,750 700,750 650,950"
+              d="M 650,150 C 400,250 200,400 300,650 C 400,850 700,1000 650,1250 C 600,1450 200,1600 300,1850 C 400,2050 700,2250 650,2500 C 600,2700 200,2850 300,3000"
               fill="none"
               stroke="white"
               strokeWidth="20"
@@ -118,7 +119,7 @@ const Experience = () => {
           </mask>
 
           <path
-            d="M 650,200 C 400,300 200,400 300,600 C 400,750 700,750 650,950"
+            d="M 650,150 C 400,250 200,400 300,650 C 400,850 700,1000 650,1250 C 600,1450 200,1600 300,1850 C 400,2050 700,2250 650,2500 C 600,2700 200,2850 300,3000"
             fill="none"
             stroke="#ffffff"
             strokeWidth="2"
@@ -163,13 +164,13 @@ const Experience = () => {
           />
         </svg>
 
-        {/* Cards Container */}
+        {/* Cards Container with properly spaced vertical offsets */}
         <div className="flex flex-col gap-8 md:gap-12 items-center md:block relative z-10 w-full pt-4 md:pt-0 pb-6 md:pb-0">
 
           <TagCard
-            number="2021 - 2026"
-            title="Digital Marketing Manager"
-            text="Arunai Medical College & Super Specialty Hospital, Tiruvannamalai. Spearheaded branding through signage, flex, social media posts, and reels, driving organic growth (3k Instagram, 1.93k YouTube) and launching the new hospital website with SEO optimization."
+            number="July 2025 - Present"
+            title="Head of Marketing & Comms"
+            text="Classic Fashion Apparel Industries, Jordan. Leading global marketing strategy for premier apparel manufacturing, managing brand partnerships with Adidas, Under Armour, Armani, and Walmart."
             className="md:absolute md:top-[10px] md:right-[5%] lg:right-[10%] rotate-2 md:rotate-6"
             aosType="fade-left"
             aosDelay="100"
@@ -178,10 +179,10 @@ const Experience = () => {
           />
 
           <TagCard
-            number="2019 - 2020"
-            title="Touring Talkies @ YouTube"
-            text="Actor & Producer Chitra Lakshumanan. Managed cinema star interviews, video edits for reviews, maintained consistent content calendars, and scaled channel subscribers organically from 421k to 781k while managing community engagement."
-            className="md:absolute md:top-[380px] md:left-[5%] lg:left-[10%] -rotate-2 md:-rotate-6"
+            number="Sep 2023 - Jul 2025"
+            title="Manager Branding & Comms"
+            text="SKF Limited, Singapore. Directed regional GTM and marketing strategy across India, SE Asia, and ANZ, driving 30% brand awareness growth and 12% lead generation increase."
+            className="md:absolute md:top-[500px] md:left-[5%] lg:left-[10%] -rotate-2 md:-rotate-6"
             aosType="fade-right"
             aosDelay="200"
             pathLength={pathLength}
@@ -189,17 +190,48 @@ const Experience = () => {
           />
 
           <TagCard
-            number="2017 - 2019"
-            title="Video Editor Intern"
-            text="Produced rough-cut videos for short films and cine interviews, handled active social media channel operations, and delivered graphic design assets."
-            className="md:absolute md:top-[740px] md:right-[5%] lg:right-[15%] rotate-1 md:rotate-3"
+            number="Jan 2022 - Sep 2023"
+            title="Deputy Manager Marketing & Comms"
+            text="Sterlite Technologies, India. Implemented multi-country product launches and brand engagement campaigns in India, UK, and US while revamping digital and social media strategy."
+            className="md:absolute md:top-[1000px] md:right-[5%] lg:right-[15%] rotate-1 md:rotate-3"
             aosType="fade-left"
             aosDelay="300"
             pathLength={pathLength}
             containerRef={containerRef}
           />
 
-         
+          <TagCard
+            number="Nov 2017 - Dec 2021"
+            title="Team Lead Internal Comms"
+            text="Capgemini Technologies Limited, India. Supported crisis response and public affairs campaigns, managing direct communications with regulators and public sector partners."
+            className="md:absolute md:top-[1500px] md:left-[5%] lg:left-[10%] -rotate-1 md:-rotate-4"
+            aosType="fade-right"
+            aosDelay="400"
+            pathLength={pathLength}
+            containerRef={containerRef}
+          />
+
+          <TagCard
+            number="Feb 2014 - Nov 2017"
+            title="Corporate Comms Manager"
+            text="Kaloupi Incorporated, US. Managed multi-stakeholder, cross-sector communication, engagement for new category launches, and built public-private partnerships."
+            className="md:absolute md:top-[2000px] md:right-[5%] lg:right-[10%] rotate-2 md:rotate-5"
+            aosType="fade-left"
+            aosDelay="500"
+            pathLength={pathLength}
+            containerRef={containerRef}
+          />
+
+          <TagCard
+            number="Jun 2013 - Feb 2014"
+            title="Faculty Research"
+            text="Amity Research Centre, India. Created research-backed strategic content for academic and corporate use, including case studies used by McKinsey, Harvard, and INSEAD."
+            className="md:absolute md:top-[2500px] md:left-[5%] lg:left-[10%] -rotate-2 md:-rotate-5"
+            aosType="fade-right"
+            aosDelay="600"
+            pathLength={pathLength}
+            containerRef={containerRef}
+          />
 
         </div>
 
