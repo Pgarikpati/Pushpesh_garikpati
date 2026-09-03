@@ -54,12 +54,12 @@ const Preloader = ({ onComplete }) => {
               className="overflow-hidden"
             >
               <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tighter uppercase mb-4">
-                Balaji <span className="text-zinc-600">Sivakumar</span>
+                Pushpesh <span className="text-zinc-600">Garikpati</span>
               </h1>
             </motion.div>
 
             <p className="text-zinc-400 font-mono text-xs md:text-sm tracking-widest uppercase mb-12">
-              Digital Marketing Manager & Growth Specialist
+              Global Marketing, Communications & Brand Leader
             </p>
 
             {/* Massive Numbers Percentage */}
