@@ -18,17 +18,11 @@ const Hero = () => {
     });
 
     const videoEl = videoRef.current;
-    // Detect iOS devices (iPhone, iPad, iPod)
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-
     if (videoEl) {
-      if (isIOS) {
-        // On iOS, force normal playback so the video plays cleanly without scrubbing blocks
-        videoEl.play().catch(() => {});
-      } else {
-        videoEl.pause();
-        videoEl.currentTime = 0;
-      }
+      videoEl.pause();
+      videoEl.currentTime = 0;
+      // Preload video data for mobile/iOS
+      videoEl.load();
     }
 
     let ticking = false;
@@ -50,8 +44,8 @@ const Hero = () => {
 
             setScrollProgress(progress);
 
-            // Only scrub via currentTime on non-iOS devices
-            if (!isIOS && currentVideo && currentVideo.duration && !isNaN(currentVideo.duration)) {
+            // Update video time smoothly on scroll for ALL devices (including iOS & mobile)
+            if (currentVideo && currentVideo.duration && !isNaN(currentVideo.duration)) {
               currentVideo.currentTime = progress * currentVideo.duration;
             }
           }
@@ -97,8 +91,6 @@ const Hero = () => {
           muted
           playsInline
           webkit-playsinline="true"
-          autoPlay
-          loop
           preload="auto"
           onLoadedMetadata={(e) => {
             if (e.target.duration) {
