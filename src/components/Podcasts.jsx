@@ -35,9 +35,9 @@ const Podcasts = () => {
     }
   ];
 
-  // Running ticker items list
+  // Comprehensive continuous marquee ticker items mapping all podcast features and guests
   const tickerItems = [
-    "🎙️ Podcast with US Figures",
+    "🎙️ FEATURED PODCAST: Episode One — Behind the Brand",
     "•",
     "Congresswoman Pramila Jayapal (WA 7th District)",
     "•",
@@ -45,9 +45,9 @@ const Podcasts = () => {
     "•",
     "Congressman Duncan Hunter (Subcommittee Chairman)",
     "•",
-    "State Representative Niraj Antani (Ohio House)",
+    "State Representative Niraj Antani (Ohio House of Representatives)",
     "•",
-    "Featured Global Podcast Interview (Behind the Brand)",
+    "US Political Dialogues & Global Media Interviews",
     "•"
   ];
 
@@ -151,20 +151,20 @@ const Podcasts = () => {
 
       </div>
 
-      {/* Running Marquee Ticker at the bottom */}
-      <div className="relative w-full overflow-hidden py-4 border-t border-zinc-900 bg-zinc-950/60 backdrop-blur-md">
-        <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-black to-transparent z-20 pointer-events-none" />
-        <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-black to-transparent z-20 pointer-events-none" />
+      {/* Continuous Running Marquee Ticker at the bottom */}
+      <div className="relative w-full overflow-hidden py-5 border-t border-zinc-900 bg-zinc-950/80 backdrop-blur-md">
+        <div className="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-20 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-20 pointer-events-none" />
 
         <div className="flex overflow-hidden whitespace-nowrap select-none">
           <motion.div
             initial={{ x: 0 }}
             animate={{ x: "-50%" }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
             className="flex gap-8 shrink-0 items-center"
           >
             {duplicatedTicker.map((item, idx) => (
-              <span key={idx} className="text-xs md:text-sm font-mono tracking-widest text-zinc-400 uppercase font-bold">
+              <span key={idx} className="text-xs md:text-sm font-mono tracking-widest text-zinc-300 uppercase font-bold flex items-center gap-2">
                 {item}
               </span>
             ))}
