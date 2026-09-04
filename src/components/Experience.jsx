@@ -47,10 +47,7 @@ const TagCard = ({ number, title, company, text, className, aosDelay, aosType, p
         <h3 className={`text-xl font-black mb-1 tracking-tight transition-colors duration-700 ${isActive ? 'text-white' : 'text-zinc-100'
           }`}>{title}</h3>
 
-        <h4 className={`text-xs font-mono font-bold tracking-wider mb-3 transition-colors duration-700 uppercase ${isActive ? 'text-zinc-300' : 'text-zinc-400'
-          }`}>
-          // {company}
-        </h4>
+        
 
         <p className={`text-sm leading-relaxed font-medium transition-colors duration-700 ${isActive ? 'text-zinc-300' : 'text-zinc-400'
           }`}>
