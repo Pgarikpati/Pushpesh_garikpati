@@ -89,7 +89,7 @@ const Contact = () => {
 
           <div className="relative z-10">
             <div className="flex items-center justify-between mb-8">
-              <span className="text-zinc-400 font-mono text-xs tracking-widest uppercase"> Get In Touch</span>
+              <span className="text-zinc-400 font-mono text-xs tracking-widest uppercase">// Get In Touch</span>
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
             </div>
 
@@ -103,7 +103,7 @@ const Contact = () => {
 
           {/* Contact Details Box */}
           <div className="relative z-10 p-5 rounded-2xl bg-zinc-900/90 border border-zinc-800 font-mono text-xs text-zinc-300 space-y-3 shadow-inner">
-            <div className="text-zinc-500"> contact_info</div>
+            <div className="text-zinc-500">// contact_info</div>
             <div>
               <span className="text-zinc-500">name:</span> <span className="text-white">Pushpesh Garikpati</span>
             </div>
@@ -112,6 +112,17 @@ const Contact = () => {
             </div>
             <div>
               <span className="text-zinc-500">email:</span> <span className="text-white">pushpesh@outlook.in</span>
+            </div>
+            <div>
+              <span className="text-zinc-500">linkedin:</span>{' '}
+              <a 
+                href="https://in.linkedin.com/in/pushpeshgarikpati" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-white underline hover:text-zinc-300 transition-colors"
+              >
+                in.linkedin.com/in/pushpeshgarikpati
+              </a>
             </div>
             <div>
               <span className="text-zinc-500">location:</span> <span className="text-white">Dubai, UAE (Open to Immediate Relocation)</span>
