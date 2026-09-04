@@ -18,9 +18,17 @@ const Hero = () => {
     });
 
     const videoEl = videoRef.current;
+    // Detect iOS devices (iPhone, iPad, iPod)
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
     if (videoEl) {
-      videoEl.pause();
-      videoEl.currentTime = 0;
+      if (isIOS) {
+        // On iOS, force normal playback so the video plays cleanly without scrubbing blocks
+        videoEl.play().catch(() => {});
+      } else {
+        videoEl.pause();
+        videoEl.currentTime = 0;
+      }
     }
 
     let ticking = false;
@@ -30,22 +38,22 @@ const Hero = () => {
           const section = document.getElementById('home');
           const currentVideo = videoRef.current;
           
-          if (section && currentVideo && currentVideo.duration && !isNaN(currentVideo.duration)) {
+          if (section) {
             const rect = section.getBoundingClientRect();
             const scrubHeight = section.offsetHeight - window.innerHeight;
             const scrollDistance = -rect.top;
             
-            // Calculate progress between 0 and 1
             let progress = scrollDistance / scrubHeight;
             progress = Math.max(0, Math.min(1, progress));
             
-            // Force absolute completion if near the bottom boundary
             if (progress > 0.97) progress = 1;
 
             setScrollProgress(progress);
 
-            // Directly assign time to avoid requestAnimationFrame seek bottlenecks
-            currentVideo.currentTime = progress * currentVideo.duration;
+            // Only scrub via currentTime on non-iOS devices
+            if (!isIOS && currentVideo && currentVideo.duration && !isNaN(currentVideo.duration)) {
+              currentVideo.currentTime = progress * currentVideo.duration;
+            }
           }
           ticking = false;
         });
@@ -89,8 +97,8 @@ const Hero = () => {
           muted
           playsInline
           webkit-playsinline="true"
-          autoPlay={false}
-          loop={false}
+          autoPlay
+          loop
           preload="auto"
           onLoadedMetadata={(e) => {
             if (e.target.duration) {
