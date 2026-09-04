@@ -10,8 +10,9 @@ import Footer from './components/Footer'
 import Experience from './components/Experience'
 import Courses from './components/Courses'
 import Archievements from './components/Archievements'
-import ReferenceWorks from './components/ReferenceWorks'
 import Podcasts from './components/Podcasts'
+import { Feature } from 'framer-motion'
+import FeaturedMedia from './components/FeaturedMedia'
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
       <Experience />
       <Courses/>
       <Archievements />
+      <FeaturedMedia  />
       <Podcasts />
       <Contact />
       <Footer />

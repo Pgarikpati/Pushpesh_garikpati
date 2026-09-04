@@ -50,16 +50,7 @@ const About = () => {
         {/* Right Side: Staggered Cinematic Text Content */}
         <div className="flex-1 text-white text-left relative z-20">
           
-          {/* Badge Tag */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 mb-6 shadow-xl"
-          >
-            <span className="w-2 h-2 rounded-full bg-zinc-400"></span>
-            <span className="text-zinc-300 text-xs font-mono tracking-widest uppercase">// System Profile</span>
-          </motion.div>
+         
 
           {/* Title Header */}
           <motion.h2 

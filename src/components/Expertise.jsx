@@ -62,7 +62,7 @@ const Expertise = () => {
             className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 mb-4 shadow-xl"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
-            <span className="text-zinc-300 text-xs font-mono tracking-widest uppercase">// Strategic Roadmap</span>
+            <span className="text-zinc-300 text-xs font-mono tracking-widest uppercase"> Strategic Roadmap</span>
           </motion.div>
 
           <motion.h2 
@@ -108,7 +108,7 @@ const Expertise = () => {
                     {/* Step Number & Glowing Node */}
                     <div className="flex justify-between items-center mb-6">
                       <span className="text-zinc-400 font-mono text-xs tracking-widest font-bold group-hover:text-white transition-colors">
-                        // STAGE {step.number}
+                         STAGE {step.number}
                       </span>
                       <div className="w-3 h-3 rounded-full bg-zinc-800 border border-zinc-700 group-hover:bg-white group-hover:border-white group-hover:shadow-[0_0_15px_rgba(255,255,255,0.9)] transition-all duration-300" />
                     </div>

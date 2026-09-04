@@ -7,6 +7,13 @@ const Podcasts = () => {
 
   const podcastGuests = [
     {
+      name: "Episode One — Behind the Brand",
+      role: "Global Manufacturing & Strategy Podcast",
+      desc: "Recent podcast feature discussing brand creation, manufacturing excellence, scale, and human-centric strategy.",
+      link: "https://youtu.be/5KSMZGe3Jsc?feature=shared",
+      isRecentVideo: true
+    },
+    {
       name: "Rep. Pramila Jayapal",
       role: "Congresswoman, WA 7th District",
       desc: "In-depth discussions on legislative initiatives, policy-making, and public leadership."
@@ -28,13 +35,31 @@ const Podcasts = () => {
     }
   ];
 
+  // Running ticker items list
+  const tickerItems = [
+    "🎙️ Podcast with US Figures",
+    "•",
+    "Congresswoman Pramila Jayapal (WA 7th District)",
+    "•",
+    "Congressman Ed Royce (Foreign Relations Committee Chairman)",
+    "•",
+    "Congressman Duncan Hunter (Subcommittee Chairman)",
+    "•",
+    "State Representative Niraj Antani (Ohio House)",
+    "•",
+    "Featured Global Podcast Interview (Behind the Brand)",
+    "•"
+  ];
+
+  const duplicatedTicker = [...tickerItems, ...tickerItems];
+
   return (
     <section id="podcasts" ref={ref} className="relative bg-black py-32 px-6 md:px-12 w-full overflow-hidden font-sans border-t border-zinc-900">
       
       {/* Cinematic Ambient Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-zinc-800/10 rounded-full blur-[180px] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto relative z-20">
+      <div className="max-w-6xl mx-auto relative z-20 mb-20">
 
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-20">
@@ -45,7 +70,7 @@ const Podcasts = () => {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 mb-4 shadow-xl"
           >
             <span className="w-2 h-2 rounded-full bg-zinc-400 animate-pulse" />
-            <span className="text-zinc-300 text-xs font-mono tracking-widest uppercase">// Media & Interviews</span>
+            <span className="text-zinc-300 text-xs font-mono tracking-widest uppercase">Media & Interviews</span>
           </motion.div>
 
           <motion.h2 
@@ -67,7 +92,7 @@ const Podcasts = () => {
               animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{ 
                 duration: 0.8, 
-                delay: 0.2 + index * 0.15, 
+                delay: 0.2 + index * 0.1, 
                 ease: [0.16, 1, 0.3, 1] 
               }}
               whileHover={{ 
@@ -91,7 +116,7 @@ const Podcasts = () => {
                 <div>
                   <div className="flex justify-between items-center mb-6">
                     <span className="text-zinc-200 font-mono text-xs font-bold tracking-wider uppercase bg-white/5 px-3 py-1 rounded-md border border-white/5">
-                      // Podcast Feature
+                      {guest.isRecentVideo ? "Featured Podcast" : "Podcast Feature"}
                     </span>
                     <div className="w-2.5 h-2.5 rounded-full bg-zinc-800 border border-zinc-700 group-hover:bg-white group-hover:border-white group-hover:shadow-[0_0_20px_rgba(255,255,255,1)] transition-all duration-300" />
                   </div>
@@ -104,15 +129,47 @@ const Podcasts = () => {
                     {guest.role}
                   </p>
 
-                  <p className="text-zinc-400 text-sm leading-relaxed font-normal">
+                  <p className="text-zinc-400 text-sm leading-relaxed font-normal mb-6">
                     {guest.desc}
                   </p>
+
+                  {guest.link && (
+                    <a 
+                      href={guest.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white text-black font-extrabold text-xs hover:bg-zinc-200 transition-all shadow-md"
+                    >
+                      Watch Episode ↗
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
+      </div>
+
+      {/* Running Marquee Ticker at the bottom */}
+      <div className="relative w-full overflow-hidden py-4 border-t border-zinc-900 bg-zinc-950/60 backdrop-blur-md">
+        <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-black to-transparent z-20 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-black to-transparent z-20 pointer-events-none" />
+
+        <div className="flex overflow-hidden whitespace-nowrap select-none">
+          <motion.div
+            initial={{ x: 0 }}
+            animate={{ x: "-50%" }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="flex gap-8 shrink-0 items-center"
+          >
+            {duplicatedTicker.map((item, idx) => (
+              <span key={idx} className="text-xs md:text-sm font-mono tracking-widest text-zinc-400 uppercase font-bold">
+                {item}
+              </span>
+            ))}
+          </motion.div>
+        </div>
       </div>
 
       {/* Bottom subtle divider */}

@@ -38,7 +38,7 @@ const Preloader = ({ onComplete }) => {
           {/* Top Brand Indicator */}
           <div className="flex justify-between items-center relative z-10">
             <span className="text-zinc-400 font-mono text-xs tracking-[0.3em] uppercase">
-              // INITIALIZING SYSTEM
+              INITIALIZING SYSTEM
             </span>
             <span className="text-zinc-500 font-mono text-xs tracking-widest">
               PORTFOLIO

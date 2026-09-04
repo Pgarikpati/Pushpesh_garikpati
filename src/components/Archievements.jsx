@@ -55,7 +55,7 @@ const Achievements = () => {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 mb-4 shadow-xl"
           >
             <span className="w-2 h-2 rounded-full bg-zinc-400 animate-pulse" />
-            <span className="text-zinc-300 text-xs font-mono tracking-widest uppercase">// Track Record</span>
+            <span className="text-zinc-300 text-xs font-mono tracking-widest uppercase"> Track Record</span>
           </motion.div>
 
           <motion.h2 

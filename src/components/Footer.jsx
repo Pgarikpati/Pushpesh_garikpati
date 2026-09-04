@@ -11,19 +11,19 @@ const Footer = () => {
       {/* Top Row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 w-full font-bold relative z-10">
         <div className="flex flex-col gap-2">
-          <p className="text-white text-sm font-black tracking-wider">// Strategic Focus</p>
+          <p className="text-white text-sm font-black tracking-wider">Strategic Focus</p>
           <p className="text-zinc-100 font-semibold">Global Marketing & Comms</p>
           <p className="text-zinc-200 font-semibold">GTM Strategy, PR & Branding</p>
         </div>
         
         <div className="flex flex-col gap-2 md:items-center">
-          <p className="text-white text-sm font-black tracking-wider">// Location</p>
+          <p className="text-white text-sm font-black tracking-wider">Location</p>
           <p className="text-zinc-100 font-semibold">Dubai, UAE (Open to Immediate Relocation)</p>
           <a href="#projects" className="underline hover:text-white transition-colors mt-1 underline-offset-4 decoration-2 text-zinc-100 font-semibold">View Works</a>
         </div>
         
         <div className="flex flex-col gap-2 md:items-end">
-          <p className="text-white text-sm font-black tracking-wider">// Connect</p>
+          <p className="text-white text-sm font-black tracking-wider">Connect</p>
           <div className="flex items-center gap-4 mt-1">
             {/* LinkedIn Link with SVG Logo */}
             <a 

@@ -48,7 +48,7 @@ const Navbar = () => {
             className="text-lg xl:text-xl font-black tracking-tight text-white transition-opacity duration-300 hover:opacity-80 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-tight"
           >
             Pushpesh <br className="hidden sm:block" />
-            <span className="text-zinc-400">Garikpati <span className="text-white">.</span></span>
+            <span className="text-zinc-400">Garikpati <span className="text-white"></span></span>
           </a>
         </div>
 

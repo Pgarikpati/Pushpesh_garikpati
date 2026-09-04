@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useSpring, useMotionValueEvent } from 'framer-motion';
 
-const TagCard = ({ number, title, text, className, aosDelay, aosType, pathLength, containerRef }) => {
+const TagCard = ({ number, title, company, text, className, aosDelay, aosType, pathLength, containerRef }) => {
   const ref = useRef(null);
   const [isActive, setIsActive] = useState(false);
 
@@ -44,8 +44,13 @@ const TagCard = ({ number, title, text, className, aosDelay, aosType, pathLength
         <span className={`text-xl font-bold mb-2 font-serif italic transition-colors duration-700 ${isActive ? 'text-zinc-200' : 'text-zinc-500'
           }`}>{number}</span>
 
-        <h3 className={`text-2xl font-black mb-3 tracking-tight transition-colors duration-700 ${isActive ? 'text-white' : 'text-zinc-200'
+        <h3 className={`text-xl font-black mb-1 tracking-tight transition-colors duration-700 ${isActive ? 'text-white' : 'text-zinc-100'
           }`}>{title}</h3>
+
+        <h4 className={`text-xs font-mono font-bold tracking-wider mb-3 transition-colors duration-700 uppercase ${isActive ? 'text-zinc-300' : 'text-zinc-400'
+          }`}>
+          // {company}
+        </h4>
 
         <p className={`text-sm leading-relaxed font-medium transition-colors duration-700 ${isActive ? 'text-zinc-300' : 'text-zinc-400'
           }`}>
@@ -75,8 +80,8 @@ const Experience = () => {
       {/* Cinematic Ambient Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-zinc-800/10 rounded-full blur-[180px] pointer-events-none" />
 
-      {/* Expanded container height to fit all 6 items comfortably */}
-      <div className="max-w-6xl mx-auto relative md:h-[3100px] z-10">
+      {/* Expanded container height to fit all 7 items comfortably */}
+      <div className="max-w-6xl mx-auto relative md:h-[3600px] z-10">
 
         {/* Header Content */}
         <div data-aos="fade-up" className="md:absolute top-10 left-0 md:w-[450px] z-20 mb-16 md:mb-0">
@@ -96,12 +101,12 @@ const Experience = () => {
 
         {/* Desktop SVG Animated Dashed Line matching card coordinates */}
         <svg
-          className="hidden md:block absolute top-0 left-0 w-full h-[3100px] pointer-events-none z-0"
-          viewBox="0 0 1000 3100"
+          className="hidden md:block absolute top-0 left-0 w-full h-[3600px] pointer-events-none z-0"
+          viewBox="0 0 1000 3600"
           preserveAspectRatio="none"
         >
           <path
-            d="M 650,150 C 400,250 200,400 300,650 C 400,850 700,1000 650,1250 C 600,1450 200,1600 300,1850 C 400,2050 700,2250 650,2500 C 600,2700 200,2850 300,3000"
+            d="M 650,150 C 400,250 200,400 300,650 C 400,850 700,1000 650,1250 C 600,1450 200,1600 300,1850 C 400,2050 700,2250 650,2500 C 600,2700 200,2900 300,3150 C 400,3350 700,3450 650,3550"
             fill="none"
             stroke="#27272a"
             strokeWidth="2"
@@ -110,7 +115,7 @@ const Experience = () => {
 
           <mask id="path-mask-exp">
             <motion.path
-              d="M 650,150 C 400,250 200,400 300,650 C 400,850 700,1000 650,1250 C 600,1450 200,1600 300,1850 C 400,2050 700,2250 650,2500 C 600,2700 200,2850 300,3000"
+              d="M 650,150 C 400,250 200,400 300,650 C 400,850 700,1000 650,1250 C 600,1450 200,1600 300,1850 C 400,2050 700,2250 650,2500 C 600,2700 200,2900 300,3150 C 400,3350 700,3450 650,3550"
               fill="none"
               stroke="white"
               strokeWidth="20"
@@ -119,7 +124,7 @@ const Experience = () => {
           </mask>
 
           <path
-            d="M 650,150 C 400,250 200,400 300,650 C 400,850 700,1000 650,1250 C 600,1450 200,1600 300,1850 C 400,2050 700,2250 650,2500 C 600,2700 200,2850 300,3000"
+            d="M 650,150 C 400,250 200,400 300,650 C 400,850 700,1000 650,1250 C 600,1450 200,1600 300,1850 C 400,2050 700,2250 650,2500 C 600,2700 200,2900 300,3150 C 400,3350 700,3450 650,3550"
             fill="none"
             stroke="#ffffff"
             strokeWidth="2"
@@ -168,9 +173,10 @@ const Experience = () => {
         <div className="flex flex-col gap-8 md:gap-12 items-center md:block relative z-10 w-full pt-4 md:pt-0 pb-6 md:pb-0">
 
           <TagCard
-            number="July 2025 - Present"
+            number="Oct 2025 - Aug 2026"
             title="Head of Marketing & Comms"
-            text="Classic Fashion Apparel Industries, Jordan. Leading global marketing strategy for premier apparel manufacturing, managing brand partnerships with Adidas, Under Armour, Armani, and Walmart."
+            company="Classic Fashion Apparel Industries, Jordan"
+            text="Leading global marketing strategy for premier apparel manufacturing, managing brand partnerships with Adidas, Under Armour, Armani, and Walmart."
             className="md:absolute md:top-[10px] md:right-[5%] lg:right-[10%] rotate-2 md:rotate-6"
             aosType="fade-left"
             aosDelay="100"
@@ -181,7 +187,8 @@ const Experience = () => {
           <TagCard
             number="Sep 2023 - Jul 2025"
             title="Manager Branding & Comms"
-            text="SKF Limited, Singapore. Directed regional GTM and marketing strategy across India, SE Asia, and ANZ, driving 30% brand awareness growth and 12% lead generation increase."
+            company="SKF Limited"
+            text="Directed regional GTM and marketing strategy across India, SE Asia, and ANZ, driving 30% brand awareness growth and 12% lead generation increase."
             className="md:absolute md:top-[500px] md:left-[5%] lg:left-[10%] -rotate-2 md:-rotate-6"
             aosType="fade-right"
             aosDelay="200"
@@ -192,7 +199,8 @@ const Experience = () => {
           <TagCard
             number="Jan 2022 - Sep 2023"
             title="Deputy Manager Marketing & Comms"
-            text="Sterlite Technologies, India. Implemented multi-country product launches and brand engagement campaigns in India, UK, and US while revamping digital and social media strategy."
+            company="Sterlite Technologies, India"
+            text="Implemented multi-country product launches and brand engagement campaigns in India, UK, and US while revamping digital and social media strategy."
             className="md:absolute md:top-[1000px] md:right-[5%] lg:right-[15%] rotate-1 md:rotate-3"
             aosType="fade-left"
             aosDelay="300"
@@ -203,7 +211,8 @@ const Experience = () => {
           <TagCard
             number="Nov 2017 - Dec 2021"
             title="Team Lead Internal Comms"
-            text="Capgemini Technologies Limited, India. Supported crisis response and public affairs campaigns, managing direct communications with regulators and public sector partners."
+            company="Capgemini Technologies Limited, India"
+            text="Supported crisis response and public affairs campaigns, managing direct communications with regulators and public sector partners."
             className="md:absolute md:top-[1500px] md:left-[5%] lg:left-[10%] -rotate-1 md:-rotate-4"
             aosType="fade-right"
             aosDelay="400"
@@ -214,7 +223,8 @@ const Experience = () => {
           <TagCard
             number="Feb 2014 - Nov 2017"
             title="Corporate Comms Manager"
-            text="Kaloupi Incorporated, US. Managed multi-stakeholder, cross-sector communication, engagement for new category launches, and built public-private partnerships."
+            company="Kaloupi Incorporated, US"
+            text="Managed multi-stakeholder, cross-sector communication, engagement for new category launches, and built public-private partnerships."
             className="md:absolute md:top-[2000px] md:right-[5%] lg:right-[10%] rotate-2 md:rotate-5"
             aosType="fade-left"
             aosDelay="500"
@@ -225,10 +235,23 @@ const Experience = () => {
           <TagCard
             number="Jun 2013 - Feb 2014"
             title="Faculty Research"
-            text="Amity Research Centre, India. Created research-backed strategic content for academic and corporate use, including case studies used by McKinsey, Harvard, and INSEAD."
+            company="Amity Research Centre, India"
+            text="Created research-backed strategic content for academic and corporate use, including case studies used by McKinsey, Harvard, and INSEAD."
             className="md:absolute md:top-[2500px] md:left-[5%] lg:left-[10%] -rotate-2 md:-rotate-5"
             aosType="fade-right"
             aosDelay="600"
+            pathLength={pathLength}
+            containerRef={containerRef}
+          />
+
+          <TagCard
+            number="Jan 2011 - Apr 2013"
+            title="Communications Officer"
+            company="De Montfort University, Leicester"
+            text="Managed internal and external communications for De Montfort University, developing and implementing strategies for student recruitment and alumni relations."
+            className="md:absolute md:top-[3000px] md:right-[5%] lg:right-[15%] rotate-1 md:rotate-4"
+            aosType="fade-left"
+            aosDelay="700"
             pathLength={pathLength}
             containerRef={containerRef}
           />

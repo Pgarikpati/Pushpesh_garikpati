@@ -8,6 +8,7 @@ const Hero = () => {
   const videoRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [videoDuration, setVideoDuration] = useState(8);
 
   useEffect(() => {
     AOS.init({
@@ -16,51 +17,35 @@ const Hero = () => {
       easing: 'ease-out'
     });
 
-    const video = videoRef.current;
-    if (video) {
-      video.load();
-      video.pause();
+    const videoEl = videoRef.current;
+    if (videoEl) {
+      videoEl.pause();
+      videoEl.currentTime = 0;
     }
 
     let ticking = false;
-    let targetTime = 0;
-    let animationFrameId = null;
-
-    // Smooth lerp loop to eliminate laptop scrubbing jitter & lag
-    const render = () => {
-      const videoEl = videoRef.current;
-      if (videoEl && videoEl.duration && !isNaN(videoEl.duration)) {
-        // Linear interpolation for buttery smooth frame scrubbing on laptops
-        const current = videoEl.currentTime;
-        const diff = targetTime - current;
-        
-        // Only update if difference is noticeable
-        if (Math.abs(diff) > 0.005) {
-          videoEl.currentTime = current + diff * 0.25; // 0.25 smoothing factor
-        }
-      }
-      animationFrameId = requestAnimationFrame(render);
-    };
-
-    animationFrameId = requestAnimationFrame(render);
-
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const section = document.getElementById('home');
           const currentVideo = videoRef.current;
           
-          if (section && currentVideo) {
+          if (section && currentVideo && currentVideo.duration && !isNaN(currentVideo.duration)) {
             const rect = section.getBoundingClientRect();
-            const sectionHeight = section.offsetHeight - window.innerHeight;
+            const scrubHeight = section.offsetHeight - window.innerHeight;
             const scrollDistance = -rect.top;
-            const progress = Math.max(0, Math.min(1, scrollDistance / sectionHeight));
             
+            // Calculate progress between 0 and 1
+            let progress = scrollDistance / scrubHeight;
+            progress = Math.max(0, Math.min(1, progress));
+            
+            // Force absolute completion if near the bottom boundary
+            if (progress > 0.97) progress = 1;
+
             setScrollProgress(progress);
 
-            if (currentVideo.duration && !isNaN(currentVideo.duration)) {
-              targetTime = progress * currentVideo.duration;
-            }
+            // Directly assign time to avoid requestAnimationFrame seek bottlenecks
+            currentVideo.currentTime = progress * currentVideo.duration;
           }
           ticking = false;
         });
@@ -69,48 +54,50 @@ const Hero = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('touchmove', handleScroll, { passive: true });
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('touchmove', handleScroll);
     };
   }, []);
 
-  const currentTime = scrollProgress * 10;
+  const currentTime = scrollProgress * videoDuration;
   
-  // Dynamic Title & Right-Side Message Sequence
   let currentTitle = "GLOBAL MARKETING LEADER";
   let rightSideHeading = "DRIVING GTM & BRAND STRATEGY";
   let rightSideSubtext = "18+ years scaling demand generation, integrated campaigns, corporate communications, and cross-market growth.";
   
-  if (currentTime > 2.5 && currentTime <= 6) {
+  if (currentTime > videoDuration * 0.35 && currentTime <= videoDuration * 0.7) {
     currentTitle = "COMMUNICATIONS & PR EXPERT";
     rightSideHeading = "SCALING BRAND PRESENCE";
     rightSideSubtext = "Specialized in corporate reputation, stakeholder engagement, public-private partnerships, and digital transformation.";
-  } else if (currentTime > 6) {
+  } else if (currentTime > videoDuration * 0.7) {
     currentTitle = "STRATEGIC GROWTH ARCHITECT";
     rightSideHeading = "GLOBAL BRANDING & ANALYTICS";
     rightSideSubtext = "Executing multi-country product launches, data-driven performance marketing, and high-impact international campaigns.";
   }
 
   return (
-    <section id="home" className="relative w-full h-[600vh] bg-black">
-      {/* Sticky viewport container */}
+    <section id="home" className="relative w-full h-[250vh] bg-black">
       <div className="sticky top-0 w-full h-screen overflow-hidden bg-zinc-950">
         
-        {/* Fallback Background Layer while video loads */}
         <div className={`absolute inset-0 bg-black z-0 transition-opacity duration-700 ${isVideoLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} />
 
-        {/* Optimized Video Layer with Hardware Acceleration Hints */}
         <video
           ref={videoRef}
           muted
           playsInline
-          autoPlay={false}
           webkit-playsinline="true"
+          autoPlay={false}
+          loop={false}
           preload="auto"
-          onLoadedMetadata={() => setIsVideoLoaded(true)}
-          onCanPlayThrough={() => setIsVideoLoaded(true)}
+          onLoadedMetadata={(e) => {
+            if (e.target.duration) {
+              setVideoDuration(e.target.duration);
+            }
+            setIsVideoLoaded(true);
+          }}
           className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ${
             isVideoLoaded ? 'opacity-100' : 'opacity-0'
           }`}
@@ -125,21 +112,14 @@ const Hero = () => {
           Your browser does not support the video tag.
         </video>
 
-        {/* --- SPOTLIGHT LIGHTING EFFECT --- */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15)_0%,transparent_65%)] z-10 pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.85)_85%)] z-10 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-transparent to-black/90 z-10 pointer-events-none" />
 
-        {/* Main Content Layout */}
         <div className="absolute inset-0 z-25 px-6 sm:px-12 md:px-16 lg:px-20 max-w-[1440px] mx-auto flex flex-col justify-between w-full h-full py-10 pointer-events-none">
-          
-          {/* Top spacer */}
           <div className="w-full h-8" />
 
-          {/* SPLIT LAYOUT */}
           <div className="grid grid-cols-1 lg:grid-cols-12 items-center justify-between w-full my-auto gap-8 pointer-events-auto">
-            
-            {/* LEFT SIDE (Span 5 columns): Name & Title */}
             <div className="lg:col-span-5 flex flex-col items-start justify-center">
               <motion.div 
                 initial={{ opacity: 0, y: 10 }}
@@ -167,10 +147,8 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* EMPTY CENTER GAP (Span 2 columns) */}
             <div className="hidden lg:block lg:col-span-2" />
 
-            {/* RIGHT SIDE (Span 5 columns) */}
             <div className="lg:col-span-5 flex flex-col items-start lg:items-end text-left lg:text-right justify-center">
               <div className="min-h-[110px] flex flex-col justify-center items-start lg:items-end">
                 <AnimatePresence mode="wait">
@@ -183,7 +161,7 @@ const Hero = () => {
                     className="flex flex-col items-start lg:items-end"
                   >
                     <h3 className="text-zinc-300 text-xs sm:text-sm font-mono tracking-[0.3em] uppercase mb-2.5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] font-bold">
-                      // {rightSideHeading}
+                       {rightSideHeading}
                     </h3>
                     <p className="text-zinc-100 text-sm sm:text-base md:text-lg font-medium max-w-sm drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)] leading-relaxed">
                       {rightSideSubtext}
@@ -192,13 +170,11 @@ const Hero = () => {
                 </AnimatePresence>
               </div>
             </div>
-
           </div>
 
-          {/* Bottom Bar: Scroll Tip & Action CTAs */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full gap-4 pointer-events-auto pb-2">
             <p className="text-zinc-400 text-xs tracking-widest uppercase font-medium hidden sm:block drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
-              ↓ Scroll to scrub timeline
+              ↓ Scroll to explore timeline
             </p>
 
             <div className="flex items-center gap-3 w-full sm:w-auto">
@@ -216,7 +192,6 @@ const Hero = () => {
               </a>
             </div>
           </div>
-
         </div>
       </div>
     </section>
