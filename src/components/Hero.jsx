@@ -179,7 +179,7 @@ const Hero = () => {
 
             <div className="flex items-center gap-3 w-full sm:w-auto">
               <a 
-                href="#projects" 
+                href="#featured-media" 
                 className="px-7 py-3.5 text-xs sm:text-sm rounded-full bg-white text-black font-extrabold hover:bg-zinc-200 transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.25)] transform hover:scale-105 text-center"
               >
                 View Works

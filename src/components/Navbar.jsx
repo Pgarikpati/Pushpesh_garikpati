@@ -23,9 +23,9 @@ const Navbar = () => {
     { name: 'Expertise', href: '#expertise' },
     { name: 'Skills', href: '#skills' },
     { name: 'Experience', href: '#experience' },
-    { name: 'Certifications', href: '#certifications' },
-    { name: 'Achievements', href: '#achievements' },
-    { name: 'Reference Works', href: '#projects' },
+    { name: 'Courses', href: '#certifications' },
+    { name: 'Featured Media', href: '#featured-media' },
+    { name: 'Podcasts', href: '#podcasts' },
     { name: 'Contact', href: '#contact' }
   ];
 
@@ -73,7 +73,7 @@ const Navbar = () => {
             href="#contact" 
             className="px-5 py-2 rounded-full text-xs font-extrabold transition-all duration-300 bg-white/10 border border-white/30 text-white hover:bg-white hover:text-black backdrop-blur-md shadow-2xl whitespace-nowrap"
           >
-            Hire Me
+            Get in Touch
           </a>
         </div>
 
@@ -118,7 +118,7 @@ const Navbar = () => {
                onClick={() => setIsOpen(false)} 
                className="inline-block px-6 py-3 rounded-full bg-white text-black font-extrabold hover:bg-zinc-200 transition-all duration-300 w-full text-center shadow-xl"
              >
-               Hire Me
+               Get in Touch
              </a>
           </div>
         </div>

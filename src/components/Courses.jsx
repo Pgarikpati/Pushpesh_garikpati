@@ -38,8 +38,29 @@ const EducationAndCourses = () => {
   return (
     <section id="certifications" ref={ref} className="relative bg-black py-32 px-6 md:px-12 w-full overflow-hidden font-sans border-t border-zinc-900">
       
-      {/* Cinematic Ambient Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-zinc-800/10 rounded-full blur-[180px] pointer-events-none" />
+      {/* Cinematic Ambient Background Dynamic Glowing Orbs */}
+      <motion.div 
+        animate={{ 
+          scale: [1, 1.2, 1],
+          opacity: [0.15, 0.3, 0.15],
+          x: ['-50%', '-45%', '-50%'],
+          y: ['-50%', '-55%', '-50%']
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/2 left-1/2 w-[700px] h-[700px] bg-gradient-to-tr from-zinc-700/20 via-white/10 to-zinc-500/10 rounded-full blur-[180px] pointer-events-none" 
+      />
+
+      {/* Floating Ambient Light Particles */}
+      <motion.div 
+        animate={{ y: [-20, 20, -20], opacity: [0.3, 0.7, 0.3] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 left-10 w-72 h-72 bg-white/5 rounded-full blur-[100px] pointer-events-none"
+      />
+      <motion.div 
+        animate={{ y: [20, -20, 20], opacity: [0.2, 0.6, 0.2] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-1/4 right-10 w-80 h-80 bg-zinc-400/10 rounded-full blur-[120px] pointer-events-none"
+      />
 
       <div className="max-w-6xl mx-auto relative z-20">
 
@@ -51,7 +72,11 @@ const EducationAndCourses = () => {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 mb-4 shadow-xl"
           >
-            <span className="w-2 h-2 rounded-full bg-zinc-400 animate-pulse" />
+            <motion.span 
+              animate={{ scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] }} 
+              transition={{ duration: 2, repeat: Infinity }} 
+              className="w-2 h-2 rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,1)]" 
+            />
             <span className="text-zinc-300 text-xs font-mono tracking-widest uppercase">Academic & Executive Background</span>
           </motion.div>
 
@@ -66,39 +91,65 @@ const EducationAndCourses = () => {
         </div>
 
         {/* EDUCATION SECTION */}
-        <div className="mb-16">
-          <h3 className="text-xl font-bold text-zinc-300 mb-8 font-mono tracking-wider uppercase border-b border-zinc-800 pb-3">
+        <div className="mb-20">
+          <motion.h3 
+            initial={{ opacity: 0, x: -20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-xl font-bold text-zinc-300 mb-8 font-mono tracking-wider uppercase border-b border-zinc-800 pb-3 flex items-center gap-3"
+          >
+            <span className="w-1.5 h-6 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
             Education
-          </h3>
+          </motion.h3>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {educationData.map((item, index) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 60, scale: 0.95 }}
-                animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                initial={{ opacity: 0, y: 80, scale: 0.9, filter: 'blur(10px)' }}
+                animate={isInView ? { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' } : {}}
                 transition={{ 
-                  duration: 0.8, 
-                  delay: 0.15 + index * 0.15, 
+                  duration: 0.9, 
+                  delay: 0.25 + index * 0.2, 
                   ease: [0.16, 1, 0.3, 1] 
                 }}
                 whileHover={{ 
-                  y: -10, 
+                  y: -12, 
                   scale: 1.02,
                   transition: { duration: 0.3, ease: "easeOut" }
                 }}
                 className="group relative"
               >
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-zinc-500 via-white to-zinc-700 rounded-[2.4rem] opacity-20 group-hover:opacity-100 transition duration-700 blur-sm pointer-events-none" />
+                {/* Always-Visible Pulsing Cinematic Outer Glow Border */}
+                <motion.div 
+                  animate={{ 
+                    opacity: [0.3, 0.7, 0.3],
+                    scale: [1, 1.01, 1]
+                  }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 }}
+                  className="absolute -inset-0.5 bg-gradient-to-r from-zinc-400 via-white to-zinc-600 rounded-[2.4rem] blur-[6px] pointer-events-none" 
+                />
 
+                {/* Card Container */}
                 <div className="relative rounded-3xl p-8 bg-zinc-950 border border-zinc-800/80 transition-all duration-500 overflow-hidden backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.8)] flex flex-col justify-between h-full">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.08] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                  
+                  {/* Subtle Ambient Shimmer Effect */}
+                  <motion.div 
+                    animate={{ x: ['-100%', '200%'] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: index * 1.5 }}
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent pointer-events-none" 
+                  />
 
                   <div>
                     <div className="flex justify-between items-center mb-6">
-                      <span className="text-zinc-200 font-mono text-sm font-bold tracking-wider uppercase bg-white/5 px-3 py-1 rounded-md border border-white/5">
+                      <span className="text-zinc-200 font-mono text-sm font-bold tracking-wider uppercase bg-white/10 px-3.5 py-1.5 rounded-lg border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                         {item.period}
                       </span>
-                      <div className="w-2.5 h-2.5 rounded-full bg-zinc-800 border border-zinc-700 group-hover:bg-white group-hover:border-white group-hover:shadow-[0_0_20px_rgba(255,255,255,1)] transition-all duration-300" />
+                      <motion.div 
+                        animate={{ scale: [1, 1.3, 1], boxShadow: ['0 0 0px rgba(255,255,255,0)', '0 0 15px rgba(255,255,255,0.8)', '0 0 0px rgba(255,255,255,0)'] }}
+                        transition={{ duration: 2.5, repeat: Infinity, delay: index * 0.4 }}
+                        className="w-3 h-3 rounded-full bg-white border border-white" 
+                      />
                     </div>
 
                     <h4 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-2 group-hover:translate-x-1 transition-transform duration-300">
@@ -121,38 +172,64 @@ const EducationAndCourses = () => {
 
         {/* COURSES & CERTIFICATIONS SECTION */}
         <div>
-          <h3 className="text-xl font-bold text-zinc-300 mb-8 font-mono tracking-wider uppercase border-b border-zinc-800 pb-3">
+          <motion.h3 
+            initial={{ opacity: 0, x: -20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-xl font-bold text-zinc-300 mb-8 font-mono tracking-wider uppercase border-b border-zinc-800 pb-3 flex items-center gap-3"
+          >
+            <span className="w-1.5 h-6 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
             Executive Programs & Certifications
-          </h3>
+          </motion.h3>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {coursesData.map((item, index) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 60, scale: 0.95 }}
-                animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                initial={{ opacity: 0, y: 80, scale: 0.9, filter: 'blur(10px)' }}
+                animate={isInView ? { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' } : {}}
                 transition={{ 
-                  duration: 0.8, 
-                  delay: 0.3 + index * 0.15, 
+                  duration: 0.9, 
+                  delay: 0.5 + index * 0.2, 
                   ease: [0.16, 1, 0.3, 1] 
                 }}
                 whileHover={{ 
-                  y: -10, 
+                  y: -12, 
                   scale: 1.02,
                   transition: { duration: 0.3, ease: "easeOut" }
                 }}
                 className="group relative"
               >
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-zinc-500 via-white to-zinc-700 rounded-[2.4rem] opacity-20 group-hover:opacity-100 transition duration-700 blur-sm pointer-events-none" />
+                {/* Always-Visible Pulsing Cinematic Outer Glow Border */}
+                <motion.div 
+                  animate={{ 
+                    opacity: [0.3, 0.7, 0.3],
+                    scale: [1, 1.01, 1]
+                  }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: (index + 2) * 0.5 }}
+                  className="absolute -inset-0.5 bg-gradient-to-r from-zinc-400 via-white to-zinc-600 rounded-[2.4rem] blur-[6px] pointer-events-none" 
+                />
 
+                {/* Card Container */}
                 <div className="relative rounded-3xl p-8 bg-zinc-950 border border-zinc-800/80 transition-all duration-500 overflow-hidden backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.8)] flex flex-col justify-between h-full">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.08] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                  
+                  {/* Subtle Ambient Shimmer Effect */}
+                  <motion.div 
+                    animate={{ x: ['-100%', '200%'] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: (index + 2) * 1.5 }}
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent pointer-events-none" 
+                  />
 
                   <div>
                     <div className="flex justify-between items-center mb-6">
-                      <span className="text-zinc-200 font-mono text-sm font-bold tracking-wider uppercase bg-white/5 px-3 py-1 rounded-md border border-white/5">
+                      <span className="text-zinc-200 font-mono text-sm font-bold tracking-wider uppercase bg-white/10 px-3.5 py-1.5 rounded-lg border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                         {item.period}
                       </span>
-                      <div className="w-2.5 h-2.5 rounded-full bg-zinc-800 border border-zinc-700 group-hover:bg-white group-hover:border-white group-hover:shadow-[0_0_20px_rgba(255,255,255,1)] transition-all duration-300" />
+                      <motion.div 
+                        animate={{ scale: [1, 1.3, 1], boxShadow: ['0 0 0px rgba(255,255,255,0)', '0 0 15px rgba(255,255,255,0.8)', '0 0 0px rgba(255,255,255,0)'] }}
+                        transition={{ duration: 2.5, repeat: Infinity, delay: (index + 2) * 0.4 }}
+                        className="w-3 h-3 rounded-full bg-white border border-white" 
+                      />
                     </div>
 
                     <h4 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-2 group-hover:translate-x-1 transition-transform duration-300">

@@ -9,7 +9,6 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Experience from './components/Experience'
 import Courses from './components/Courses'
-import Archievements from './components/Archievements'
 import Podcasts from './components/Podcasts'
 import { Feature } from 'framer-motion'
 import FeaturedMedia from './components/FeaturedMedia'
@@ -24,7 +23,6 @@ function App() {
       <Skills />
       <Experience />
       <Courses/>
-      <Archievements />
       <FeaturedMedia  />
       <Podcasts />
       <Contact />

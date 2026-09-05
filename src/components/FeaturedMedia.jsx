@@ -1,9 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import podcastImage from '../assets/podcasts/image.png';
 
 const FeaturedMedia = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const publications = [
     {
@@ -68,69 +70,108 @@ const FeaturedMedia = () => {
           </motion.h2>
         </div>
 
-        {/* Top Feature Grid: Podcast & Award */}
+        {/* Top Feature Grid: Embedded YouTube Video & LinkedIn Award Post */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           
-          {/* Recent Podcast Card */}
+          {/* Embedded YouTube Video Card with custom thumbnail overlay */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="group relative rounded-3xl p-8 bg-zinc-950 border border-zinc-800/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.8)] flex flex-col justify-between"
+            className="group relative rounded-3xl p-6 bg-zinc-950 border border-zinc-800/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.8)] flex flex-col justify-between"
           >
             <div className="absolute -inset-0.5 bg-gradient-to-r from-zinc-500 via-white to-zinc-700 rounded-[2.4rem] opacity-15 group-hover:opacity-60 transition duration-700 blur-sm pointer-events-none" />
-            <div className="relative z-10">
-              <span className="text-zinc-400 font-mono text-xs font-bold tracking-wider uppercase bg-white/5 px-3 py-1 rounded-md border border-white/5 inline-block mb-4">
+            <div className="relative z-10 flex flex-col h-full">
+              <span className="text-zinc-400 font-mono text-xs font-bold tracking-wider uppercase bg-white/5 px-3 py-1 rounded-md border border-white/5 inline-block mb-4 self-start">
                  Recent Video & Podcast
               </span>
-              <h3 className="text-2xl font-black text-white tracking-tight mb-3">
+              <h3 className="text-xl font-black text-white tracking-tight mb-3">
                 Episode One — Behind the Brand
               </h3>
-              <p className="text-zinc-400 text-sm leading-relaxed mb-6">
+              
+              {/* Responsive YouTube Embed Container with Thumbnail Preview */}
+              <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 mb-4 shadow-inner">
+                {!isPlaying ? (
+                  <div 
+                    className="relative w-full h-full cursor-pointer group/thumb"
+                    onClick={() => setIsPlaying(true)}
+                  >
+                    <img 
+                      src={podcastImage} 
+                      alt="Episode One — Behind the Brand" 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover/thumb:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center transition-colors group-hover/thumb:bg-black/20">
+                      <div className="w-16 h-16 rounded-full bg-white/90 text-black flex items-center justify-center shadow-2xl transition-transform group-hover/thumb:scale-110">
+                        <svg className="w-7 h-7 fill-current translate-x-0.5" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <iframe
+                    className="absolute top-0 left-0 w-full h-full"
+                    src="https://www.youtube-nocookie.com/embed/5KSMZGe3Jsc?autoplay=1"
+                    title="Episode One — Behind the Brand"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                )}
+              </div>
+
+              <p className="text-zinc-400 text-xs leading-relaxed mb-6">
                 Discussion on manufacturing excellence, scale, brand creation, and human-centric strategy.
               </p>
+
               <a 
                 href="https://youtu.be/5KSMZGe3Jsc?feature=shared" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black font-extrabold text-xs hover:bg-zinc-200 transition-all shadow-lg"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black font-extrabold text-xs hover:bg-zinc-200 transition-all shadow-lg self-start"
               >
-                Watch on YouTube →
+                Watch it on Video →
               </a>
             </div>
           </motion.div>
 
-          {/* GEC 40Under40 Award Card */}
+          {/* GEC 40Under40 Award Card with Embedded LinkedIn Video / Post */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="group relative rounded-3xl p-8 bg-zinc-950 border border-zinc-800/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.8)] flex flex-col justify-between"
+            className="group relative rounded-3xl p-6 bg-zinc-950 border border-zinc-800/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.8)] flex flex-col justify-between"
           >
             <div className="absolute -inset-0.5 bg-gradient-to-r from-zinc-500 via-white to-zinc-700 rounded-[2.4rem] opacity-15 group-hover:opacity-60 transition duration-700 blur-sm pointer-events-none" />
-            <div className="relative z-10">
+            <div className="relative z-10 flex flex-col h-full">
               <div className="flex justify-between items-start mb-4">
                 <span className="text-zinc-400 font-mono text-xs font-bold tracking-wider uppercase bg-white/5 px-3 py-1 rounded-md border border-white/5">
                    Jan 2025 - Present
                 </span>
                 <span className="text-emerald-400 font-mono text-xs font-bold">Awardee</span>
               </div>
-              <h3 className="text-2xl font-black text-white tracking-tight mb-3">
+              <h3 className="text-xl font-black text-white tracking-tight mb-3">
                 GEC 40Under40 Award
               </h3>
-              <p className="text-zinc-400 text-sm leading-relaxed mb-6">
-                Awarded by a distinguished jury comprising leaders from Forbes, Mercedes-Benz, CNN, India TV, and the GEC 40 community for achievements in Marketing, Communications, Sustainability, and Leadership.
+
+              {/* Embedded LinkedIn Post / Video Container */}
+              <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 mb-4 flex items-center justify-center">
+                <iframe
+                  src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7284559833897328643"
+                  height="100%"
+                  width="100%"
+                  frameBorder="0"
+                  allowFullScreen=""
+                  title="Embedded LinkedIn post"
+                  className="w-full h-full"
+                ></iframe>
+              </div>
+
+              <p className="text-zinc-400 text-xs leading-relaxed mb-4">
+                Awarded by a distinguished jury for achievements in Marketing, Communications, Sustainability, and Leadership.
               </p>
+
               <div className="flex flex-wrap gap-3">
-                <a 
-                  href="https://www.linkedin.com/posts/global-excellence-awards-2024_gectrailblazerunder40-awardacceptance-activity-7284559833897328643-2igo" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-xs font-bold text-zinc-300 underline hover:text-white transition-colors"
-                >
-                  View Acceptance Post ↗
-                </a>
-                <span className="text-zinc-700">•</span>
                 <a 
                   href="https://peoplefirsthrmagazine.com/viewarticle/377" 
                   target="_blank" 
