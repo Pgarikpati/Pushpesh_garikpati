@@ -111,7 +111,7 @@ const Contact = () => {
             <div>
               <span className="text-zinc-500">LinkedIn:</span>{' '}
               <a 
-                href="https://in.linkedin.com/in/pushpeshgarikpati" 
+                href="https://www.linkedin.com/in/pushpeshgarikpati/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-white underline hover:text-zinc-300 transition-colors ml-1"
