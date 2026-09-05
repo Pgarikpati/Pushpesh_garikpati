@@ -114,9 +114,9 @@ const Contact = () => {
                 href="https://in.linkedin.com/in/pushpeshgarikpati" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-white underline hover:text-zinc-300 transition-colors"
+                className="text-white underline hover:text-zinc-300 transition-colors ml-1"
               >
-                in.linkedin.com/in/pushpeshgarikpati
+                Click Here ↗
               </a>
             </div>
             <div>
