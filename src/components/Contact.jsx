@@ -94,7 +94,7 @@ const Contact = () => {
             </div>
 
             <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight mb-4">
-              Let's Build Something Exceptional !
+              Let's start a conversation!
             </h3>
             
           </div>
