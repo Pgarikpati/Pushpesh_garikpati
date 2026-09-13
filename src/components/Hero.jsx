@@ -68,7 +68,7 @@ const Hero = () => {
   
   let currentTitle = "GLOBAL MARKETING LEADER";
   let rightSideHeading = "DRIVING GTM & BRAND STRATEGY";
-  let rightSideSubtext = "18+ years scaling demand generation, integrated campaigns, corporate communications, and cross-market growth.";
+  let rightSideSubtext = "15+ years scaling demand generation, integrated campaigns, corporate communications, and cross-market growth.";
   
   if (currentTime > videoDuration * 0.35 && currentTime <= videoDuration * 0.7) {
     currentTitle = "COMMUNICATIONS & PR EXPERT";
