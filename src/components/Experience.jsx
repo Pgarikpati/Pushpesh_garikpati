@@ -173,9 +173,9 @@ const Experience = () => {
         <div className="flex flex-col gap-8 md:gap-12 items-center md:block relative z-10 w-full pt-4 md:pt-0 pb-6 md:pb-0">
 
           <TagCard
-            number="Oct 2025 - Aug 2026"
-            title="Head of Marketing & Comms"
-            company="Classic Fashion Apparel Industries, Jordan"
+            number="Nov 2025 - Aug 2026"
+            title="Head of Corporate Communications"
+            company="Classic Fashion Apparel Industries, UAE & Jordan"
             text="Leading global marketing strategy for premier apparel manufacturing, managing brand partnerships with Adidas, Under Armour, Armani, and Walmart."
             className="md:absolute md:top-[10px] md:right-[5%] lg:right-[10%] rotate-2 md:rotate-6"
             aosType="fade-left"
@@ -186,8 +186,8 @@ const Experience = () => {
 
           <TagCard
             number="Sep 2023 - Jul 2025"
-            title="Manager Branding & Comms"
-            company="SKF Limited"
+            title="Manager Corporate Communications"
+            company="SKF Limited, India & SEA"
             text="Directed regional GTM and marketing strategy across India, SE Asia, and ANZ, driving 30% brand awareness growth and 12% lead generation increase."
             className="md:absolute md:top-[500px] md:left-[5%] lg:left-[10%] -rotate-2 md:-rotate-6"
             aosType="fade-right"
@@ -198,8 +198,8 @@ const Experience = () => {
 
           <TagCard
             number="Jan 2022 - Sep 2023"
-            title="Deputy Manager Marketing & Comms"
-            company="Sterlite Technologies, India"
+            title="Deputy Manager Corporate Communications"
+            company="Sterlite Technologies, India & UAE"
             text="Implemented multi-country product launches and brand engagement campaigns in India, UK, and US while revamping digital and social media strategy."
             className="md:absolute md:top-[1000px] md:right-[5%] lg:right-[15%] rotate-1 md:rotate-3"
             aosType="fade-left"
@@ -210,7 +210,7 @@ const Experience = () => {
 
           <TagCard
             number="Nov 2017 - Dec 2021"
-            title="Team Lead Internal Comms"
+            title="Team Lead Internal Communications"
             company="Capgemini Technologies Limited, India"
             text="Supported crisis response and public affairs campaigns, managing direct communications with regulators and public sector partners."
             className="md:absolute md:top-[1500px] md:left-[5%] lg:left-[10%] -rotate-1 md:-rotate-4"
@@ -222,8 +222,8 @@ const Experience = () => {
 
           <TagCard
             number="Feb 2014 - Nov 2017"
-            title="Corporate Comms Manager"
-            company="Kaloupi Incorporated, US"
+            title="Corporate Communications Manager"
+            company="Kaloupi Incorporated, India & US"
             text="Managed multi-stakeholder, cross-sector communication, engagement for new category launches, and built public-private partnerships."
             className="md:absolute md:top-[2000px] md:right-[5%] lg:right-[10%] rotate-2 md:rotate-5"
             aosType="fade-left"
@@ -247,7 +247,7 @@ const Experience = () => {
           <TagCard
             number="Jan 2011 - Apr 2013"
             title="Communications Officer"
-            company="De Montfort University, Leicester"
+            company="De Montfort University, UK"
             text="Managed internal and external communications for De Montfort University, developing and implementing strategies for student recruitment and alumni relations."
             className="md:absolute md:top-[3000px] md:right-[5%] lg:right-[15%] rotate-1 md:rotate-4"
             aosType="fade-left"
