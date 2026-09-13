@@ -72,7 +72,7 @@ const About = () => {
             transition={{ duration: 0.7, delay: 0.4 }}
             className="text-base md:text-lg font-normal leading-relaxed text-zinc-300 max-w-2xl drop-shadow mb-12"
           >
-            Strategic global marketing and communications leader with 15+ years of expertise spanning GTM, product marketing, integrated campaigns, corporate communications, PR, and digital branding. Proven track record in scaling demand generation, unifying international priorities, and driving tech-enabled innovation across the Middle East, Asia, US, and Europe. Recognized as a 40under40 awardee and published in Harvard Business Review.
+            Marketing and corporate communications leader with 15+ years of international experience across the Middle East, APAC, Europe, and the US. Expertise spans regional GTM, corporate reputation, brand strategy, integrated campaigns, PR, employer branding, stakeholder engagement, and digital communications. Proven track record of delivering measurable improvements including 15% client retention growth, 30% brand awareness growth, 12% lead generation increase, 20% employee engagement boost, and 12% attrition reduction. Experienced in leading cross-functional teams and translating global brand priorities into market-level business outcomes across the GCC and other international markets.
           </motion.p>
 
           {/* Quick Stats Grid with Scale-in Animation */}
