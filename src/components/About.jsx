@@ -72,7 +72,7 @@ const About = () => {
             transition={{ duration: 0.7, delay: 0.4 }}
             className="text-base md:text-lg font-normal leading-relaxed text-zinc-300 max-w-2xl drop-shadow mb-12"
           >
-            Strategic global marketing and communications leader with 18+ years of expertise spanning GTM, product marketing, integrated campaigns, corporate communications, PR, and digital branding. Proven track record in scaling demand generation, unifying international priorities, and driving tech-enabled innovation across the Middle East, Asia, US, and Europe. Recognized as a 40under40 awardee and published in Harvard Business Review.
+            Strategic global marketing and communications leader with 15+ years of expertise spanning GTM, product marketing, integrated campaigns, corporate communications, PR, and digital branding. Proven track record in scaling demand generation, unifying international priorities, and driving tech-enabled innovation across the Middle East, Asia, US, and Europe. Recognized as a 40under40 awardee and published in Harvard Business Review.
           </motion.p>
 
           {/* Quick Stats Grid with Scale-in Animation */}
