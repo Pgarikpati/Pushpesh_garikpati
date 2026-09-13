@@ -83,8 +83,8 @@ const About = () => {
             className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-6 border-t border-zinc-800/80"
           >
             <div className="p-5 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 backdrop-blur-xl hover:border-zinc-500 transition-all duration-300 group">
-              <h4 className="text-white text-2xl font-black tracking-tight mb-1 group-hover:translate-x-1 transition-transform">18+ Years</h4>
-              <p className="text-zinc-400 text-xs font-mono uppercase tracking-wider">Global Marketing Leadership</p>
+              <h4 className="text-white text-2xl font-black tracking-tight mb-1 group-hover:translate-x-1 transition-transform">15+ Years</h4>
+              <p className="text-zinc-400 text-xs font-mono uppercase tracking-wider">Global Marketing and Communications</p>
             </div>
             
             <div className="p-5 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 backdrop-blur-xl hover:border-zinc-500 transition-all duration-300 group">
