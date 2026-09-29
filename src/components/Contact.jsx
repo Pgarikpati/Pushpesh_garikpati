@@ -109,6 +109,15 @@ const Contact = () => {
               <span className="text-zinc-500">Email:</span> <span className="text-white">pushpesh@outlook.in</span>
             </div>
             <div>
+              <span className="text-zinc-500">Phone:</span>{' '}
+              <a 
+                href="tel:+971555772004" 
+                className="text-white underline hover:text-zinc-300 transition-colors"
+              >
+                +971 55 577 2004
+              </a>
+            </div>
+            <div>
               <span className="text-zinc-500">LinkedIn:</span>{' '}
               <a 
                 href="https://www.linkedin.com/in/pushpeshgarikpati/" 
@@ -120,7 +129,7 @@ const Contact = () => {
               </a>
             </div>
             <div>
-              <span className="text-zinc-500">Location:</span> <span className="text-white">Dubai, UAE </span>
+              <span className="text-zinc-500">Location:</span> <span className="text-white">Dubai, UAE</span>
             </div>
           </div>
         </motion.div>
