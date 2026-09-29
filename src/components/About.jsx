@@ -88,7 +88,7 @@ const About = () => {
             </div>
             
             <div className="p-5 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 backdrop-blur-xl hover:border-zinc-500 transition-all duration-300 group">
-              <h4 className="text-white text-2xl font-black tracking-tight mb-1 group-hover:translate-x-1 transition-transform">GTM & Growth</h4>
+              <h4 className="text-white text-2xl font-black tracking-tight mb-1 group-hover:translate-x-1 transition-transform">Internal & External Comms</h4>
               <p className="text-zinc-400 text-xs font-mono uppercase tracking-wider">Cross-Market Strategy</p>
             </div>
             
