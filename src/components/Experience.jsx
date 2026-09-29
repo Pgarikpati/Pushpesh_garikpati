@@ -174,7 +174,7 @@ const Experience = () => {
 
           <TagCard
             number="Nov 2025 - Aug 2026"
-            title="Head of Corporate Communications"
+            title="Manager Corporate Communications"
             company="Classic Fashion Apparel Industries, UAE & Jordan"
             text="Leading global marketing strategy for premier apparel manufacturing, managing brand partnerships with Adidas, Under Armour, Armani, and Walmart."
             className="md:absolute md:top-[10px] md:right-[5%] lg:right-[10%] rotate-2 md:rotate-6"
@@ -186,7 +186,7 @@ const Experience = () => {
 
           <TagCard
             number="Sep 2023 - Jul 2025"
-            title="Manager Corporate Communications"
+            title="Manager Internal Communications"
             company="SKF Limited, India & SEA"
             text="Directed regional GTM and marketing strategy across India, SE Asia, and ANZ, driving 30% brand awareness growth and 12% lead generation increase."
             className="md:absolute md:top-[500px] md:left-[5%] lg:left-[10%] -rotate-2 md:-rotate-6"
@@ -198,7 +198,7 @@ const Experience = () => {
 
           <TagCard
             number="Jan 2022 - Sep 2023"
-            title="Deputy Manager Corporate Communications"
+            title="Deputy Manager Internal Communications"
             company="Sterlite Technologies, India & UAE"
             text="Implemented multi-country product launches and brand engagement campaigns in India, UK, and US while revamping digital and social media strategy."
             className="md:absolute md:top-[1000px] md:right-[5%] lg:right-[15%] rotate-1 md:rotate-3"
@@ -222,7 +222,7 @@ const Experience = () => {
 
           <TagCard
             number="Feb 2014 - Nov 2017"
-            title="Corporate Communications Manager"
+            title="Corporate Communications Executive"
             company="Kaloupi Incorporated, India & US"
             text="Managed multi-stakeholder, cross-sector communication, engagement for new category launches, and built public-private partnerships."
             className="md:absolute md:top-[2000px] md:right-[5%] lg:right-[10%] rotate-2 md:rotate-5"
